@@ -24,6 +24,15 @@ clear screen
 ./bin.js '++++++++++[>++++++++++>+<<-]>[>.<-]'
 ```
 
+translate text into bf program that outputs same text
+
+```sh
+./bin.js (./bin.js '+++++[>+++++++++<-],[[>--.++>+<<-]>+.->[<.>-]<<,]' 'hello world')
+```
+
+```sh
+```
+
 infinitely print `>+`
 
 ```sh
