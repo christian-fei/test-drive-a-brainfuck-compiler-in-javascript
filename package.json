@@ -1,0 +1,14 @@
+{
+  "name": "test-drive-a-brainfuck-compiler-in-javascript",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.test.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+  }
+}
