@@ -175,8 +175,7 @@ assert.deepStrictEqual(brainfuck('>++++++++[<+++++++++>-]<.>++++[<+++++++>-]<+.+
   input: ''
 }, 'compiles "Hello, world!" program')
 
-function brainfuck (commands = '', { memory = [], loops = [], looping = false, pointer = 0, output = '', input = '' } = {}) {
-  let innerLoops = 0
+function brainfuck (commands = '', { memory = [], loops = [], looping = false, innerLoops = 0, pointer = 0, output = '', input = '' } = {}) {
   for (let commandIndex = 0; commandIndex < commands.length; commandIndex++) {
     const command = commands[commandIndex]
     if (looping) {
