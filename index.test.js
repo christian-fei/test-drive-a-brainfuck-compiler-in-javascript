@@ -5,10 +5,12 @@ const assert = require('assert')
 const result = brainfuck('')
 assert.ok(result, 'result is defined')
 assert.deepStrictEqual(result, {
-  memory: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-}, 'empty memory initialized with 10 bytes')
+  memory: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  pointer: 0
+}, 'empty memory initialized with 10 bytes, pointer set to 0')
 
 function brainfuck (program = '') {
   const memory = Array(10).fill(0)
-  return { memory }
+  const pointer = 0
+  return { memory, pointer }
 }
