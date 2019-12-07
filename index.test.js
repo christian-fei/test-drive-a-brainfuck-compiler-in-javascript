@@ -7,73 +7,86 @@ assert.ok(result, 'result is defined')
 assert.deepStrictEqual(result, {
   memory: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   pointer: 0,
-  output: ''
+  output: '',
+  input: ''
 }, 'empty memory initialized with 10 bytes, pointer set to 0')
 
 assert.deepStrictEqual(brainfuck('>'), {
   memory: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   pointer: 1,
-  output: ''
+  output: '',
+  input: ''
 }, 'increment pointer')
 assert.deepStrictEqual(brainfuck('>>>>>>>>>>>'), {
   memory: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   pointer: 10,
-  output: ''
+  output: '',
+  input: ''
 }, 'do not increment pointer above 10')
 
 assert.deepStrictEqual(brainfuck('<', {
   memory: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   pointer: 1,
-  output: ''
+  output: '',
+  input: ''
 }), {
   memory: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   pointer: 0,
-  output: ''
+  output: '',
+  input: ''
 }, 'decrement pointer')
 
 assert.deepStrictEqual(brainfuck('<'), {
   memory: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   pointer: 0,
-  output: ''
+  output: '',
+  input: ''
 }, 'do not decrement pointer below 0')
 
 assert.deepStrictEqual(brainfuck('+'), {
   memory: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   pointer: 0,
-  output: ''
+  output: '',
+  input: ''
 }, 'increment byte at pointer')
 
 assert.deepStrictEqual(brainfuck('-', {
   memory: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   pointer: 0,
-  output: ''
+  output: '',
+  input: ''
 }), {
   memory: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   pointer: 0,
-  output: ''
+  output: '',
+  input: ''
 }, 'decrement byte at pointer')
 
 assert.deepStrictEqual(brainfuck('.', {
   memory: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   pointer: 0,
-  output: ''
+  output: '',
+  input: ''
 }), {
   memory: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   pointer: 0,
-  output: '\u0000'
+  output: '\u0000',
+  input: ''
 }, 'output byte at pointer')
 
 assert.deepStrictEqual(brainfuck('.', {
   memory: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   pointer: 0,
-  output: ''
+  output: '',
+  input: ''
 }), {
   memory: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   pointer: 0,
-  output: '\u0001'
+  output: '\u0001',
+  input: ''
 }, 'output byte at pointer incremented by 1')
 
-function brainfuck (commands = '', { pointer = 0, memory = Array(10).fill(0) } = {}, output = '') {
+function brainfuck (commands = '', { pointer = 0, memory = Array(10).fill(0) } = {}, output = '', input = '') {
   for (const command of commands) {
     if (command === '>' && pointer < 10) pointer++
     if (command === '<' && pointer > 0) pointer--
@@ -81,5 +94,5 @@ function brainfuck (commands = '', { pointer = 0, memory = Array(10).fill(0) } =
     if (command === '-') memory[pointer]--
     if (command === '.') output += String.fromCharCode(memory[pointer])
   }
-  return { memory, pointer, output }
+  return { memory, pointer, output, input }
 }
