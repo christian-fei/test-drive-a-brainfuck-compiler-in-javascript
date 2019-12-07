@@ -86,7 +86,8 @@ assert.deepStrictEqual(brainfuck(',', {
 }, 'input a byte and store it in the byte at the pointer')
 
 function brainfuck (commands = '', { pointer = 0, memory = Array(10).fill(0), output = '', input = '' } = {}) {
-  for (const command of commands) {
+  for (let commandIndex = 0; commandIndex < commands.length; commandIndex++) {
+    const command = commands[commandIndex]
     if (command === '>' && pointer < 10) pointer++
     if (command === '<' && pointer > 0) pointer--
     if (command === '+') memory[pointer]++
