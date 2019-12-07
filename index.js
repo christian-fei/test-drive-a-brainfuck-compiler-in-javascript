@@ -1,5 +1,6 @@
 module.exports = {
   compile,
+  interpret,
   run
 }
 

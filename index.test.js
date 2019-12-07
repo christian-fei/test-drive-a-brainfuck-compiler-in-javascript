@@ -186,3 +186,9 @@ assert.deepStrictEqual(brainfuck.compile('[', {
   output: '',
   input: ''
 }, 'pushes commandIndex in loop stack')
+
+assert.deepStrictEqual(
+  brainfuck.run('>,>+++++++++,>+++++++++++[<++++++<++++++<+>>>-]<<.>.<<-.>.>.<<.', { input: '\n\u0010' }),
+  'LR\nLR\n',
+  'test 1 http://www.hevanet.com/cristofd/brainfuck/tests.b'
+)
