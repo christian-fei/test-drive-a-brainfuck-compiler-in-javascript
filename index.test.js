@@ -5,4 +5,6 @@ const assert = require('assert')
 const result = brainfuck('')
 assert(result, 'result is defined')
 
-function brainfuck (commandsString = '') {}
+function brainfuck (commandsString = '') {
+  return []
+}
