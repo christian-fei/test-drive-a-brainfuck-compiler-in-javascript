@@ -1,13 +1,24 @@
 test drive a brainfuck compiler in javascript
 
-## usage
+## tests
 
+```
+npm test
+```
+
+## examples
 
 print "Hello World!"
-```
-./bin.js '++++++++[>++++[>++>+++>+++>+<<<<-]>+>->+>>+[<]<-]>>.>>---.+++++++..+++.>.<<-.>.+++.------.--------.>+.'
-``` 
 
+```sh
+./bin.js '++++++++[>++++[>++>+++>+++>+<<<<-]>+>->+>>+[<]<-]>>.>>---.+++++++..+++.>.<<-.>.+++.------.--------.>+.'
+```
+
+clear screen
+
+```sh
+./bin.js '++++++++++[>++++++++++>+<<-]>[>.<-]'
+```
 ---
 
 from the [brainfuck website](https://www.muppetlabs.com/~breadbox/bf/)

@@ -224,16 +224,16 @@ assert.deepStrictEqual(
   'complex example - print a'
 )
 
+assert.deepStrictEqual(
+  brainfuck.run(`,[.[-],]`, { input: 'hello' }),
+  'hello',
+  'complex example - pipe input to output'
+)
+
 // assert.deepStrictEqual(
 //   brainfuck.run(`>,[>>>++++++++[<[<++>-]<+[>+<-]<-[-[-<]>]>[-<]<,>>>-]<.[-]<<]`, { input: '0110100001101001' }),
 //   'hi',
 //   'complex example - binary to ascii'
-// )
-
-// assert.deepStrictEqual(
-//   brainfuck.run(`+[>,]<-[+.<-]`, { input: 'hello\n' }),
-//   'olleh',
-//   'complex example - reverse'
 // )
 
 // assert.deepStrictEqual(
