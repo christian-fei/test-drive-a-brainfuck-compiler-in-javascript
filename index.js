@@ -46,8 +46,8 @@ function interpret (command, { memory = [], loops = [], looping = false, command
   return { commandIndex, innerLoops, memory, loops, looping, pointer, output, input }
 }
 
-function run (program) {
-  const result = compile(program)
+function run (program, { input = '' } = {}) {
+  const result = compile(program, { input })
   console.log(result.output)
   return result.output
 }
