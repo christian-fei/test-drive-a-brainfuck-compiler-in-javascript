@@ -5,6 +5,7 @@ const assert = require('assert')
 assert.ok(brainfuck(''), 'result is defined')
 assert.deepStrictEqual(brainfuck(''), {
   memory: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  loops: [],
   pointer: 0,
   output: '',
   input: ''
@@ -12,12 +13,14 @@ assert.deepStrictEqual(brainfuck(''), {
 
 assert.deepStrictEqual(brainfuck('>'), {
   memory: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  loops: [],
   pointer: 1,
   output: '',
   input: ''
 }, 'increment the pointer')
 assert.deepStrictEqual(brainfuck('>>>>>>>>>>>'), {
   memory: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  loops: [],
   pointer: 10,
   output: '',
   input: ''
@@ -25,11 +28,13 @@ assert.deepStrictEqual(brainfuck('>>>>>>>>>>>'), {
 
 assert.deepStrictEqual(brainfuck('<', {
   memory: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  loops: [],
   pointer: 1,
   output: '',
   input: ''
 }), {
   memory: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  loops: [],
   pointer: 0,
   output: '',
   input: ''
@@ -37,6 +42,7 @@ assert.deepStrictEqual(brainfuck('<', {
 
 assert.deepStrictEqual(brainfuck('<'), {
   memory: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  loops: [],
   pointer: 0,
   output: '',
   input: ''
@@ -44,6 +50,7 @@ assert.deepStrictEqual(brainfuck('<'), {
 
 assert.deepStrictEqual(brainfuck('+'), {
   memory: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  loops: [],
   pointer: 0,
   output: '',
   input: ''
@@ -51,11 +58,13 @@ assert.deepStrictEqual(brainfuck('+'), {
 
 assert.deepStrictEqual(brainfuck('-', {
   memory: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  loops: [],
   pointer: 0,
   output: '',
   input: ''
 }), {
   memory: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  loops: [],
   pointer: 0,
   output: '',
   input: ''
@@ -63,11 +72,13 @@ assert.deepStrictEqual(brainfuck('-', {
 
 assert.deepStrictEqual(brainfuck('.', {
   memory: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  loops: [],
   pointer: 0,
   output: '',
   input: ''
 }), {
   memory: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  loops: [],
   pointer: 0,
   output: '\u0000',
   input: ''
@@ -75,17 +86,19 @@ assert.deepStrictEqual(brainfuck('.', {
 
 assert.deepStrictEqual(brainfuck(',', {
   memory: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  loops: [],
   pointer: 0,
   output: '',
   input: '\u0001'
 }), {
   memory: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  loops: [],
   pointer: 0,
   output: '',
   input: ''
 }, 'input a byte and store it in the byte at the pointer')
 
-function brainfuck (commands = '', { pointer = 0, memory = Array(10).fill(0), output = '', input = '' } = {}) {
+function brainfuck (commands = '', { memory = Array(10).fill(0), loops = [], pointer = 0, output = '', input = '' } = {}) {
   for (let commandIndex = 0; commandIndex < commands.length; commandIndex++) {
     const command = commands[commandIndex]
     if (command === '>' && pointer < 10) pointer++
@@ -98,5 +111,5 @@ function brainfuck (commands = '', { pointer = 0, memory = Array(10).fill(0), ou
       input = input.slice(1)
     }
   }
-  return { memory, pointer, output, input }
+  return { memory, loops, pointer, output, input }
 }
