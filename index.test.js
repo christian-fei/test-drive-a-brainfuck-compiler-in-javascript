@@ -26,16 +26,6 @@ assert.deepStrictEqual(brainfuck.compile('>'), {
   output: '',
   input: ''
 }, 'increment the pointer')
-assert.deepStrictEqual(brainfuck.compile('>>>>>>>>>>>'), {
-  memory: [],
-  loops: [],
-  looping: false,
-  innerLoops: 0,
-  commandIndex: 11,
-  pointer: 10,
-  output: '',
-  input: ''
-}, 'do not increment the pointer above 10')
 
 assert.deepStrictEqual(brainfuck.compile('<', {
   memory: [],
@@ -221,3 +211,59 @@ assert.deepStrictEqual(
   '666',
   'complex example - 666'
 )
+
+assert.deepStrictEqual(
+  brainfuck.run(`+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++.`, { input: '' }),
+  'a',
+  'complex example - print a'
+)
+
+// assert.deepStrictEqual(
+//   brainfuck.run(`>,[>>>++++++++[<[<++>-]<+[>+<-]<-[-[-<]>]>[-<]<,>>>-]<.[-]<<]`, { input: '0110100001101001' }),
+//   'hi',
+//   'complex example - binary to ascii'
+// )
+
+// assert.deepStrictEqual(
+//   brainfuck.run(`+[>,]<-[+.<-]`, { input: 'hello\n' }),
+//   'olleh',
+//   'complex example - reverse'
+// )
+
+// assert.deepStrictEqual(
+//   brainfuck.run(`
+//                                 >
+//                                + +
+//                               +   +
+//                              [ < + +
+//                             +       +
+//                            + +     + +
+//                           >   -   ]   >
+//                          + + + + + + + +
+//                         [               >
+//                        + +             + +
+//                       <   -           ]   >
+//                      > + + >         > > + >
+//                     >       >       +       <
+//                    < <     < <     < <     < <
+//                   <   [   -   [   -   >   +   <
+//                  ] > [ - < + > > > . < < ] > > >
+//                 [                               [
+//                - >                             + +
+//               +   +                           +   +
+//              + + [ >                         + + + +
+//             <       -                       ]       >
+//            . <     < [                     - >     + <
+//           ]   +   >   [                   -   >   +   +
+//          + + + + + + + +                 < < + > ] > . [
+//         -               ]               >               ]
+//        ] +             < <             < [             - [
+//       -   >           +   <           ]   +           >   [
+//      - < + >         > > - [         - > + <         ] + + >
+//     [       -       <       -       >       ]       <       <
+//    < ]     < <     < <     ] +     + +     + +     + +     + +
+//   +   .   +   +   +   .   [   -   ]   <   ]   +   +   +   +   +
+//   `),
+//   '',
+//   'complex example - tree'
+// )

@@ -5,6 +5,7 @@ module.exports = {
 
 function compile (commands = '', { memory = [], loops = [], looping = false, commandIndex = 0, innerLoops = 0, pointer = 0, output = '', input = '' } = {}) {
   let state = { memory, loops, looping, commandIndex, innerLoops, pointer, output, input }
+  commands = commands.replace(/ /gi, '')
   while (state.commandIndex < commands.length) {
     state = interpret(commands[state.commandIndex], state)
   }
@@ -18,8 +19,10 @@ function interpret (command, { memory = [], loops = [], looping = false, command
       if (innerLoops === 0) looping = false
       else innerLoops--
     }
+    commandIndex++
+    return { commandIndex, innerLoops, memory, loops, looping, pointer, output, input }
   }
-  if (command === '>' && pointer < 10) pointer++
+  if (command === '>') pointer++
   if (command === '<' && pointer > 0) pointer--
   if (command === '+') memory[pointer] ? memory[pointer]++ : memory[pointer] = 1
   if (command === '-') memory[pointer] ? memory[pointer]-- : memory[pointer] = 0
@@ -39,7 +42,7 @@ function interpret (command, { memory = [], loops = [], looping = false, command
     if (memory[pointer] === 0) {
       loops.pop()
     } else {
-      commandIndex = loops[loops.length - 1] || 0
+      commandIndex = loops[loops.length - 1]
     }
   }
   commandIndex++
