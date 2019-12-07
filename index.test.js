@@ -176,3 +176,9 @@ assert.deepStrictEqual(brainfuck.compile('>++++++++[<+++++++++>-]<.>++++[<++++++
   output: 'Hello, World!',
   input: ''
 }, 'compiles "Hello, world!" program')
+
+assert.deepStrictEqual(
+  brainfuck.run('>++++++++[<+++++++++>-]<.>++++[<+++++++>-]<+.+++++++..+++.>>++++++[<+++++++>-]<++.------------.>++++++[<+++++++++>-]<+.<.+++.------.--------.>>>++++[<++++++++>-]<+.'),
+  'Hello, World!',
+  'runs "Hello, world!" program'
+)

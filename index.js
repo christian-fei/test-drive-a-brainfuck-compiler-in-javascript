@@ -1,6 +1,7 @@
 
 module.exports = {
-  compile
+  compile,
+  run
 }
 
 function compile (commands = '', { memory = [], loops = [], looping = false, innerLoops = 0, pointer = 0, output = '', input = '' } = {}) {
@@ -39,4 +40,10 @@ function compile (commands = '', { memory = [], loops = [], looping = false, inn
     }
   }
   return { memory, loops, looping, pointer, output, input }
+}
+
+function run (program) {
+  const result = compile(program)
+  console.log(result.output)
+  return result.output
 }
