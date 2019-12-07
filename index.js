@@ -1,4 +1,3 @@
-
 module.exports = {
   compile,
   run
@@ -8,13 +7,12 @@ function compile (commands = '', { memory = [], loops = [], looping = false, com
   let state = { memory, loops, looping, commandIndex, innerLoops, pointer, output, input }
   for (; state.commandIndex < commands.length; state.commandIndex++) {
     const command = commands[state.commandIndex]
-    state = interpretCommand(command, state)
+    state = interpret(command, state)
   }
-
   return state
 }
 
-function interpretCommand (command, { memory = [], loops = [], looping = false, commandIndex = 0, innerLoops = 0, pointer = 0, output = '', input = '' } = {}) {
+function interpret (command, { memory = [], loops = [], looping = false, commandIndex = 0, innerLoops = 0, pointer = 0, output = '', input = '' } = {}) {
   if (looping) {
     if (command === '[') innerLoops++
     if (command === ']') {
@@ -22,7 +20,6 @@ function interpretCommand (command, { memory = [], loops = [], looping = false, 
       else innerLoops--
     }
   }
-
   if (command === '>' && pointer < 10) pointer++
   if (command === '<' && pointer > 0) pointer--
   if (command === '+') memory[pointer] ? memory[pointer]++ : memory[pointer] = 1
