@@ -16,6 +16,9 @@ assert.deepStrictEqual(brainfuck('>'), {
 
 function brainfuck (commands = '') {
   const memory = Array(10).fill(0)
-  const pointer = 0
+  let pointer = 0
+  for (const command of commands) {
+    if (command === '>') pointer++
+  }
   return { memory, pointer }
 }
