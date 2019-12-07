@@ -236,6 +236,16 @@ assert.deepStrictEqual(
   'complex example - strip tabs and linefeeds'
 )
 
+assert.deepStrictEqual(
+  brainfuck.run(
+    brainfuck.run(`+++++[>+++++++++<-],[[>--.++>+<<-]>+.->[<.>-]<<,]`, {
+      input: 'hello world'
+    })
+  ),
+  'hello world',
+  'complex example - translate text to brainfuck that prints it'
+)
+
 // assert.deepStrictEqual(
 //   brainfuck.run(`>,[>>>++++++++[<[<++>-]<+[>+<-]<-[-[-<]>]>[-<]<,>>>-]<.[-]<<]`, { input: '0110100001101001' }),
 //   'hi',
