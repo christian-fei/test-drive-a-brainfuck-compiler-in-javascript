@@ -230,6 +230,12 @@ assert.deepStrictEqual(
   'complex example - pipe input to output'
 )
 
+assert.deepStrictEqual(
+  brainfuck.run(`,[---------[-[++++++++++.[-]]],]`, { input: 'hello\t world\n\t \n\t\t\txoxo' }),
+  'hello world xoxo',
+  'complex example - strip tabs and linefeeds'
+)
+
 // assert.deepStrictEqual(
 //   brainfuck.run(`>,[>>>++++++++[<[<++>-]<+[>+<-]<-[-[-<]>]>[-<]<,>>>-]<.[-]<<]`, { input: '0110100001101001' }),
 //   'hi',
