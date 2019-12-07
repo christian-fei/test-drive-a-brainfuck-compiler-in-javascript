@@ -53,6 +53,16 @@ assert.deepStrictEqual(brainfuck('-', {
   output: ''
 }, 'decrement byte at pointer')
 
+assert.deepStrictEqual(brainfuck('.', {
+  memory: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  pointer: 0,
+  output: ''
+}), {
+  memory: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  pointer: 0,
+  output: '\u0000'
+}, 'output byte at pointer')
+
 function brainfuck (commands = '', { pointer = 0, memory = Array(10).fill(0) } = {}, output = '') {
   for (const command of commands) {
     if (command === '>' && pointer < 10) pointer++
