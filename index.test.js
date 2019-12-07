@@ -161,14 +161,7 @@ assert.deepStrictEqual(brainfuck.compile('[', {
   input: ''
 }, 'pushes commandIndex in loop stack')
 
-assert.deepStrictEqual(brainfuck.compile('>++++++++[<+++++++++>-]<.>++++[<+++++++>-]<+.+++++++..+++.>>++++++[<+++++++>-]<++.------------.>++++++[<+++++++++>-]<+.<.+++.------.--------.>>>++++[<++++++++>-]<+.', {
-  memory: [],
-  loops: [],
-  looping: false,
-  pointer: 0,
-  output: '',
-  input: ''
-}), {
+assert.deepStrictEqual(brainfuck.compile('>++++++++[<+++++++++>-]<.>++++[<+++++++>-]<+.+++++++..+++.>>++++++[<+++++++>-]<++.------------.>++++++[<+++++++++>-]<+.<.+++.------.--------.>>>++++[<++++++++>-]<+.'), {
   memory: [100, 87, 33, 0],
   loops: [],
   looping: false,
