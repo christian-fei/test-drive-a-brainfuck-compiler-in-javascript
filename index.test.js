@@ -39,6 +39,7 @@ function brainfuck (commands = '') {
   for (const command of commands) {
     if (command === '>' && pointer < 10) pointer++
     if (command === '<' && pointer > 0) pointer--
+    if (command === '+') memory[pointer]++
   }
   return { memory, pointer }
 }
