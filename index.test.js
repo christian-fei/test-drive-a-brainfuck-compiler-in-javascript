@@ -24,6 +24,7 @@ function brainfuck (commands = '') {
   let pointer = 0
   for (const command of commands) {
     if (command === '>') pointer++
+    if (command === '<') pointer--
   }
   return { memory, pointer }
 }
