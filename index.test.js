@@ -16,13 +16,13 @@ assert.deepStrictEqual(brainfuck('>'), {
   pointer: 1,
   output: '',
   input: ''
-}, 'increment pointer')
+}, 'increment the pointer')
 assert.deepStrictEqual(brainfuck('>>>>>>>>>>>'), {
   memory: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   pointer: 10,
   output: '',
   input: ''
-}, 'do not increment pointer above 10')
+}, 'do not increment the pointer above 10')
 
 assert.deepStrictEqual(brainfuck('<', {
   memory: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -34,21 +34,21 @@ assert.deepStrictEqual(brainfuck('<', {
   pointer: 0,
   output: '',
   input: ''
-}, 'decrement pointer')
+}, 'decrement the pointer')
 
 assert.deepStrictEqual(brainfuck('<'), {
   memory: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   pointer: 0,
   output: '',
   input: ''
-}, 'do not decrement pointer below 0')
+}, 'do not decrement the pointer below 0')
 
 assert.deepStrictEqual(brainfuck('+'), {
   memory: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   pointer: 0,
   output: '',
   input: ''
-}, 'increment byte at pointer')
+}, 'increment the byte at the pointer')
 
 assert.deepStrictEqual(brainfuck('-', {
   memory: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -60,7 +60,7 @@ assert.deepStrictEqual(brainfuck('-', {
   pointer: 0,
   output: '',
   input: ''
-}, 'decrement byte at pointer')
+}, 'decrement the byte at the pointer')
 
 assert.deepStrictEqual(brainfuck('.', {
   memory: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -72,7 +72,7 @@ assert.deepStrictEqual(brainfuck('.', {
   pointer: 0,
   output: '\u0000',
   input: ''
-}, 'output byte at pointer')
+}, 'output the byte at the pointer')
 
 assert.deepStrictEqual(brainfuck('.', {
   memory: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -84,7 +84,7 @@ assert.deepStrictEqual(brainfuck('.', {
   pointer: 0,
   output: '\u0001',
   input: ''
-}, 'output byte at pointer incremented by 1')
+}, 'output the byte at the pointer incremented by 1')
 
 function brainfuck (commands = '', { pointer = 0, memory = Array(10).fill(0) } = {}, output = '', input = '') {
   for (const command of commands) {

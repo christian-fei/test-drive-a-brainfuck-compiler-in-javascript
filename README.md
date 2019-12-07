@@ -1,19 +1,19 @@
 from the [brainfuck website](https://www.muppetlabs.com/~breadbox/bf/)
 
 ```
-A Brainfuck program has an implicit byte pointer, called "the pointer", which is free to move around within an array of 30000 bytes, initially all set to zero. The pointer itself is initialized to point to the beginning of this array.
+a brainfuck program has an implicit byte pointer, called "the pointer", which is free to move around within an array of 30000 bytes, initially all set to zero. the pointer itself is initialized to point to the beginning of this array.
 
-The Brainfuck programming language consists of eight commands, each of which is represented as a single character.
+the brainfuck programming language consists of eight commands, each of which is represented as a single character.
 
-> 	Increment the pointer.
-< 	Decrement the pointer.
-+ 	Increment the byte at the pointer.
-- 	Decrement the byte at the pointer.
-. 	Output the byte at the pointer.
-, 	Input a byte and store it in the byte at the pointer.
-[ 	Jump forward past the matching ] if the byte at the pointer is zero.
-] 	Jump backward to the matching [ unless the byte at the pointer is zero.
-The semantics of the Brainfuck commands can also be succinctly expressed in terms of C, as follows (assuming that p has been previously defined as a char*):
+> 	increment the pointer
+< 	decrement the pointer
++ 	increment the byte at the pointer
+- 	decrement the byte at the pointer
+. 	output the byte at the pointer
+, 	input a byte and store it in the byte at the pointer
+[ 	jump forward past the matching ] if the byte at the pointer is zero
+] 	jump backward to the matching [ unless the byte at the pointer is zero
+the semantics of the brainfuck commands can also be succinctly expressed in terms of c, as follows (assuming that p has been previously defined as a char*):
 
 > 	becomes 	++p;
 < 	becomes 	--p;
