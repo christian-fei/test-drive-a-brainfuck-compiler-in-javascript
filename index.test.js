@@ -4,8 +4,8 @@ const assert = require('assert')
 
 const brainfuck = require('.')
 
-assert.ok(brainfuck(''), 'result is defined')
-assert.deepStrictEqual(brainfuck(''), {
+assert.ok(brainfuck.compile(''), 'result is defined')
+assert.deepStrictEqual(brainfuck.compile(''), {
   memory: [],
   loops: [],
   looping: false,
@@ -14,7 +14,7 @@ assert.deepStrictEqual(brainfuck(''), {
   input: ''
 }, 'empty memory initialized with 10 bytes, pointer set to 0')
 
-assert.deepStrictEqual(brainfuck('>'), {
+assert.deepStrictEqual(brainfuck.compile('>'), {
   memory: [],
   loops: [],
   looping: false,
@@ -22,7 +22,7 @@ assert.deepStrictEqual(brainfuck('>'), {
   output: '',
   input: ''
 }, 'increment the pointer')
-assert.deepStrictEqual(brainfuck('>>>>>>>>>>>'), {
+assert.deepStrictEqual(brainfuck.compile('>>>>>>>>>>>'), {
   memory: [],
   loops: [],
   looping: false,
@@ -31,7 +31,7 @@ assert.deepStrictEqual(brainfuck('>>>>>>>>>>>'), {
   input: ''
 }, 'do not increment the pointer above 10')
 
-assert.deepStrictEqual(brainfuck('<', {
+assert.deepStrictEqual(brainfuck.compile('<', {
   memory: [],
   loops: [],
   looping: false,
@@ -47,7 +47,7 @@ assert.deepStrictEqual(brainfuck('<', {
   input: ''
 }, 'decrement the pointer')
 
-assert.deepStrictEqual(brainfuck('<'), {
+assert.deepStrictEqual(brainfuck.compile('<'), {
   memory: [],
   loops: [],
   looping: false,
@@ -56,7 +56,7 @@ assert.deepStrictEqual(brainfuck('<'), {
   input: ''
 }, 'do not decrement the pointer below 0')
 
-assert.deepStrictEqual(brainfuck('+'), {
+assert.deepStrictEqual(brainfuck.compile('+'), {
   memory: [1],
   loops: [],
   looping: false,
@@ -65,7 +65,7 @@ assert.deepStrictEqual(brainfuck('+'), {
   input: ''
 }, 'increment the byte at the pointer')
 
-assert.deepStrictEqual(brainfuck('-', {
+assert.deepStrictEqual(brainfuck.compile('-', {
   memory: [1],
   loops: [],
   looping: false,
@@ -81,7 +81,7 @@ assert.deepStrictEqual(brainfuck('-', {
   input: ''
 }, 'decrement the byte at the pointer')
 
-assert.deepStrictEqual(brainfuck('.', {
+assert.deepStrictEqual(brainfuck.compile('.', {
   memory: [],
   loops: [],
   looping: false,
@@ -97,7 +97,7 @@ assert.deepStrictEqual(brainfuck('.', {
   input: ''
 }, 'output the byte at the pointer')
 
-assert.deepStrictEqual(brainfuck(',', {
+assert.deepStrictEqual(brainfuck.compile(',', {
   memory: [],
   loops: [],
   looping: false,
@@ -113,7 +113,7 @@ assert.deepStrictEqual(brainfuck(',', {
   input: ''
 }, 'input a byte and store it in the byte at the pointer')
 
-assert.deepStrictEqual(brainfuck('[', {
+assert.deepStrictEqual(brainfuck.compile('[', {
   memory: [],
   loops: [],
   looping: false,
@@ -129,7 +129,7 @@ assert.deepStrictEqual(brainfuck('[', {
   input: ''
 }, 'jump forward past the matching ] if the byte at the pointer is zero')
 
-assert.deepStrictEqual(brainfuck(']', {
+assert.deepStrictEqual(brainfuck.compile(']', {
   memory: [],
   loops: [],
   looping: true,
@@ -145,7 +145,7 @@ assert.deepStrictEqual(brainfuck(']', {
   input: ''
 }, 'ends loops with matching ]')
 
-assert.deepStrictEqual(brainfuck('[', {
+assert.deepStrictEqual(brainfuck.compile('[', {
   memory: [1],
   loops: [],
   looping: false,
@@ -161,7 +161,7 @@ assert.deepStrictEqual(brainfuck('[', {
   input: ''
 }, 'pushes commandIndex in loop stack')
 
-assert.deepStrictEqual(brainfuck('>++++++++[<+++++++++>-]<.>++++[<+++++++>-]<+.+++++++..+++.>>++++++[<+++++++>-]<++.------------.>++++++[<+++++++++>-]<+.<.+++.------.--------.>>>++++[<++++++++>-]<+.', {
+assert.deepStrictEqual(brainfuck.compile('>++++++++[<+++++++++>-]<.>++++[<+++++++>-]<+.+++++++..+++.>>++++++[<+++++++>-]<++.------------.>++++++[<+++++++++>-]<+.<.+++.------.--------.>>>++++[<++++++++>-]<+.', {
   memory: [],
   loops: [],
   looping: false,

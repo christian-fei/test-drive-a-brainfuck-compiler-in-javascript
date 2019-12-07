@@ -1,5 +1,9 @@
 
-module.exports = function brainfuck (commands = '', { memory = [], loops = [], looping = false, innerLoops = 0, pointer = 0, output = '', input = '' } = {}) {
+module.exports = {
+  compile
+}
+
+function compile (commands = '', { memory = [], loops = [], looping = false, innerLoops = 0, pointer = 0, output = '', input = '' } = {}) {
   for (let commandIndex = 0; commandIndex < commands.length; commandIndex++) {
     const command = commands[commandIndex]
     if (looping) {
