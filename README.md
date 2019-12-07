@@ -1,3 +1,15 @@
+test drive a brainfuck compiler in javascript
+
+## usage
+
+
+print "Hello World!"
+```
+./bin.js '++++++++[>++++[>++>+++>+++>+<<<<-]>+>->+>>+[<]<-]>>.>>---.+++++++..+++.>.<<-.>.+++.------.--------.>+.'
+``` 
+
+---
+
 from the [brainfuck website](https://www.muppetlabs.com/~breadbox/bf/)
 
 ```
