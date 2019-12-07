@@ -4,7 +4,7 @@ const assert = require('assert')
 
 assert.ok(brainfuck(''), 'result is defined')
 assert.deepStrictEqual(brainfuck(''), {
-  memory: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  memory: [],
   loops: [],
   looping: false,
   pointer: 0,
@@ -13,7 +13,7 @@ assert.deepStrictEqual(brainfuck(''), {
 }, 'empty memory initialized with 10 bytes, pointer set to 0')
 
 assert.deepStrictEqual(brainfuck('>'), {
-  memory: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  memory: [],
   loops: [],
   looping: false,
   pointer: 1,
@@ -21,7 +21,7 @@ assert.deepStrictEqual(brainfuck('>'), {
   input: ''
 }, 'increment the pointer')
 assert.deepStrictEqual(brainfuck('>>>>>>>>>>>'), {
-  memory: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  memory: [],
   loops: [],
   looping: false,
   pointer: 10,
@@ -30,14 +30,14 @@ assert.deepStrictEqual(brainfuck('>>>>>>>>>>>'), {
 }, 'do not increment the pointer above 10')
 
 assert.deepStrictEqual(brainfuck('<', {
-  memory: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  memory: [],
   loops: [],
   looping: false,
   pointer: 1,
   output: '',
   input: ''
 }), {
-  memory: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  memory: [],
   loops: [],
   looping: false,
   pointer: 0,
@@ -46,7 +46,7 @@ assert.deepStrictEqual(brainfuck('<', {
 }, 'decrement the pointer')
 
 assert.deepStrictEqual(brainfuck('<'), {
-  memory: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  memory: [],
   loops: [],
   looping: false,
   pointer: 0,
@@ -55,7 +55,7 @@ assert.deepStrictEqual(brainfuck('<'), {
 }, 'do not decrement the pointer below 0')
 
 assert.deepStrictEqual(brainfuck('+'), {
-  memory: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  memory: [1],
   loops: [],
   looping: false,
   pointer: 0,
@@ -64,14 +64,14 @@ assert.deepStrictEqual(brainfuck('+'), {
 }, 'increment the byte at the pointer')
 
 assert.deepStrictEqual(brainfuck('-', {
-  memory: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  memory: [1],
   loops: [],
   looping: false,
   pointer: 0,
   output: '',
   input: ''
 }), {
-  memory: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  memory: [0],
   loops: [],
   looping: false,
   pointer: 0,
@@ -80,14 +80,14 @@ assert.deepStrictEqual(brainfuck('-', {
 }, 'decrement the byte at the pointer')
 
 assert.deepStrictEqual(brainfuck('.', {
-  memory: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  memory: [],
   loops: [],
   looping: false,
   pointer: 0,
   output: '',
   input: ''
 }), {
-  memory: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  memory: [],
   loops: [],
   looping: false,
   pointer: 0,
@@ -96,14 +96,14 @@ assert.deepStrictEqual(brainfuck('.', {
 }, 'output the byte at the pointer')
 
 assert.deepStrictEqual(brainfuck(',', {
-  memory: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  memory: [],
   loops: [],
   looping: false,
   pointer: 0,
   output: '',
   input: '\u0001'
 }), {
-  memory: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  memory: [1],
   loops: [],
   looping: false,
   pointer: 0,
@@ -112,30 +112,30 @@ assert.deepStrictEqual(brainfuck(',', {
 }, 'input a byte and store it in the byte at the pointer')
 
 assert.deepStrictEqual(brainfuck('[', {
-  memory: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  memory: [],
   loops: [],
   looping: false,
   pointer: 0,
   output: '',
   input: ''
 }), {
-  memory: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  loops: [],
-  looping: true,
+  memory: [],
+  loops: [0],
+  looping: false,
   pointer: 0,
   output: '',
   input: ''
 }, 'jump forward past the matching ] if the byte at the pointer is zero')
 
 assert.deepStrictEqual(brainfuck(']', {
-  memory: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  memory: [],
   loops: [],
   looping: true,
   pointer: 0,
   output: '',
   input: ''
 }), {
-  memory: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  memory: [],
   loops: [],
   looping: false,
   pointer: 0,
@@ -144,14 +144,14 @@ assert.deepStrictEqual(brainfuck(']', {
 }, 'ends loops with matching ]')
 
 assert.deepStrictEqual(brainfuck('[', {
-  memory: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  memory: [1],
   loops: [],
   looping: false,
   pointer: 0,
   output: '',
   input: ''
 }), {
-  memory: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  memory: [1],
   loops: [0],
   looping: false,
   pointer: 0,
@@ -160,14 +160,14 @@ assert.deepStrictEqual(brainfuck('[', {
 }, 'pushes commandIndex in loop stack')
 
 assert.deepStrictEqual(brainfuck('>++++++++[<+++++++++>-]<.>++++[<+++++++>-]<+.+++++++..+++.>>++++++[<+++++++>-]<++.------------.>++++++[<+++++++++>-]<+.<.+++.------.--------.>>>++++[<++++++++>-]<+.', {
-  memory: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  memory: [],
   loops: [],
   looping: false,
   pointer: 0,
   output: '',
   input: ''
 }), {
-  memory: [100, 87, 33, 0, 0, 0, 0, 0, 0, 0],
+  memory: [100, 87, 33, 0],
   loops: [],
   looping: false,
   pointer: 2,
@@ -175,7 +175,7 @@ assert.deepStrictEqual(brainfuck('>++++++++[<+++++++++>-]<.>++++[<+++++++>-]<+.+
   input: ''
 }, 'compiles "Hello, world!" program')
 
-function brainfuck (commands = '', { memory = Array(10).fill(0), loops = [], looping = false, pointer = 0, output = '', input = '' } = {}) {
+function brainfuck (commands = '', { memory = [], loops = [], looping = false, pointer = 0, output = '', input = '' } = {}) {
   let innerLoops = 0
   for (let commandIndex = 0; commandIndex < commands.length; commandIndex++) {
     const command = commands[commandIndex]
@@ -190,8 +190,8 @@ function brainfuck (commands = '', { memory = Array(10).fill(0), loops = [], loo
 
     if (command === '>' && pointer < 10) pointer++
     if (command === '<' && pointer > 0) pointer--
-    if (command === '+') memory[pointer]++
-    if (command === '-') memory[pointer]--
+    if (command === '+') memory[pointer] ? memory[pointer]++ : memory[pointer] = 1
+    if (command === '-') memory[pointer] ? memory[pointer]-- : memory[pointer] = 0
     if (command === '.') output += String.fromCharCode(memory[pointer])
     if (command === ',' && input.length > 0) {
       memory[pointer] = input.slice(0, 1).charCodeAt()
