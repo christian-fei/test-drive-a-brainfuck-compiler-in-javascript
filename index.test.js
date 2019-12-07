@@ -215,3 +215,9 @@ assert.deepStrictEqual(
   'Hello, World!',
   'runs "Hello, World!" program'
 )
+
+assert.deepStrictEqual(
+  brainfuck.run(`>+++++++++[<++++++>-]<...`),
+  '666',
+  'complex example - 666'
+)
