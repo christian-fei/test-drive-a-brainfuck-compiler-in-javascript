@@ -49,6 +49,7 @@ function brainfuck (commands = '', { pointer = 0, memory = Array(10).fill(0) } =
     if (command === '>' && pointer < 10) pointer++
     if (command === '<' && pointer > 0) pointer--
     if (command === '+') memory[pointer]++
+    if (command === '-') memory[pointer]--
   }
   return { memory, pointer }
 }
