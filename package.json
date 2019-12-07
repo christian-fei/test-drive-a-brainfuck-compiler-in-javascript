@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "node index.test.js"
+    "test": "node index.test.js && node index.examples.test.js"
   },
   "keywords": [],
   "author": "",
