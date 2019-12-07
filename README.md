@@ -13,6 +13,7 @@ the brainfuck programming language consists of eight commands, each of which is 
 , 	input a byte and store it in the byte at the pointer
 [ 	jump forward past the matching ] if the byte at the pointer is zero
 ] 	jump backward to the matching [ unless the byte at the pointer is zero
+
 the semantics of the brainfuck commands can also be succinctly expressed in terms of c, as follows (assuming that p has been previously defined as a char*):
 
 > 	becomes 	++p;
