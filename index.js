@@ -5,9 +5,8 @@ module.exports = {
 
 function compile (commands = '', { memory = [], loops = [], looping = false, commandIndex = 0, innerLoops = 0, pointer = 0, output = '', input = '' } = {}) {
   let state = { memory, loops, looping, commandIndex, innerLoops, pointer, output, input }
-  for (; state.commandIndex < commands.length; state.commandIndex++) {
-    const command = commands[state.commandIndex]
-    state = interpret(command, state)
+  while (state.commandIndex < commands.length) {
+    state = interpret(commands[state.commandIndex], state)
   }
   return state
 }
@@ -43,6 +42,7 @@ function interpret (command, { memory = [], loops = [], looping = false, command
       commandIndex = loops[loops.length - 1] || 0
     }
   }
+  commandIndex++
   return { commandIndex, innerLoops, memory, loops, looping, pointer, output, input }
 }
 
