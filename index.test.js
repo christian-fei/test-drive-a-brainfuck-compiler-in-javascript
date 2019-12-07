@@ -19,6 +19,11 @@ assert.deepStrictEqual(brainfuck('><'), {
   pointer: 0
 }, 'decrement pointer')
 
+assert.deepStrictEqual(brainfuck('<'), {
+  memory: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  pointer: 0
+}, 'do not decrement pointer below 0')
+
 function brainfuck (commands = '') {
   const memory = Array(10).fill(0)
   let pointer = 0
