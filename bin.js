@@ -17,6 +17,7 @@ async function main (commands, input = '') {
     if (state.output) {
       process.stdout.write(state.output)
       state.output = ''
+      // await new Promise((resolve) => setTimeout(resolve, 1))
     }
   }
 
