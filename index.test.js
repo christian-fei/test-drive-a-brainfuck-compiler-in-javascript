@@ -204,10 +204,10 @@ function brainfuck (commands = '', { memory = [], loops = [], looping = false, i
       }
     }
     if (command === ']') {
-      if (memory[pointer] !== 0) {
-        commandIndex = loops[loops.length - 1]
-      } else {
+      if (memory[pointer] === 0) {
         loops.pop()
+      } else {
+        commandIndex = loops[loops.length - 1]
       }
     }
   }
