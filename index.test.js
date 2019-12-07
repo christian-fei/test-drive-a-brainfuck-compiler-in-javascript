@@ -13,6 +13,10 @@ assert.deepStrictEqual(brainfuck('>'), {
   memory: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   pointer: 1
 }, 'increment pointer')
+assert.deepStrictEqual(brainfuck('>>>>>>>>>>>'), {
+  memory: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  pointer: 10
+}, 'do not increment pointer above 10')
 
 assert.deepStrictEqual(brainfuck('><'), {
   memory: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
