@@ -9,7 +9,12 @@ assert.deepStrictEqual(result, {
   pointer: 0
 }, 'empty memory initialized with 10 bytes, pointer set to 0')
 
-function brainfuck (program = '') {
+assert.deepStrictEqual(brainfuck('>'), {
+  memory: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  pointer: 1
+}, 'increment pointer')
+
+function brainfuck (commands = '') {
   const memory = Array(10).fill(0)
   const pointer = 0
   return { memory, pointer }
