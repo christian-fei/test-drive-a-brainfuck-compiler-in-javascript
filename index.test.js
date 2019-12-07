@@ -184,7 +184,6 @@ function brainfuck (commands = '', { memory = [], loops = [], looping = false, i
         if (innerLoops === 0) looping = false
         else innerLoops--
       }
-      continue
     }
 
     if (command === '>' && pointer < 10) pointer++
