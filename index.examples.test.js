@@ -4,7 +4,7 @@ const brainfuck = require('.')
 
 assert.deepStrictEqual(brainfuck.compile('>++++++++[<+++++++++>-]<.>++++[<+++++++>-]<+.+++++++..+++.>>++++++[<+++++++>-]<++.------------.>++++++[<+++++++++>-]<+.<.+++.------.--------.>>>++++[<++++++++>-]<+.'), {
   commandIndex: 164,
-  innerLoops: 0,
+  inner: 0,
   memory: [100, 87, 33, 0],
   loops: [],
   looping: false,
