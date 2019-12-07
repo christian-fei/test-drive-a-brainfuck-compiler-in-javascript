@@ -6,6 +6,10 @@ test drive a brainfuck compiler in javascript
 npm test
 ```
 
+- [see index.examples.test.js](https://github.com/christian-fei/test-drive-a-brainfuck-compiler-in-javascript/blob/master/index.examples.test.js)
+- [see index.test.js](https://github.com/christian-fei/test-drive-a-brainfuck-compiler-in-javascript/blob/master/index.test.js)
+
+
 ## examples
 
 print "Hello World!"
@@ -19,6 +23,9 @@ clear screen
 ```sh
 ./bin.js '++++++++++[>++++++++++>+<<-]>[>.<-]'
 ```
+
+[see more examples](https://github.com/christian-fei/test-drive-a-brainfuck-compiler-in-javascript/blob/master/index.examples.test.js)
+
 ---
 
 from the [brainfuck website](https://www.muppetlabs.com/~breadbox/bf/)
