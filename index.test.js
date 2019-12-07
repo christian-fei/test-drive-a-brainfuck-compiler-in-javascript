@@ -33,8 +33,7 @@ assert.deepStrictEqual(brainfuck('+'), {
   pointer: 0
 }, 'increment byte at pointer')
 
-function brainfuck (commands = '') {
-  const memory = Array(10).fill(0)
+function brainfuck (commands = '', memory = Array(10).fill(0)) {
   let pointer = 0
   for (const command of commands) {
     if (command === '>' && pointer < 10) pointer++
