@@ -5,7 +5,7 @@ const brainfuck = require('.')
 assert.ok(brainfuck.compile(''), 'result is defined')
 assert.deepStrictEqual(brainfuck.compile(''), {
   memory: [],
-  loops: [],
+  loopCommandIndexes: [],
   looping: false,
   depth: 0,
   commandIndex: 0,
@@ -16,7 +16,7 @@ assert.deepStrictEqual(brainfuck.compile(''), {
 
 assert.deepStrictEqual(brainfuck.compile('>'), {
   memory: [],
-  loops: [],
+  loopCommandIndexes: [],
   looping: false,
   depth: 0,
   commandIndex: 1,
@@ -27,7 +27,7 @@ assert.deepStrictEqual(brainfuck.compile('>'), {
 
 assert.deepStrictEqual(brainfuck.compile('<', {
   memory: [],
-  loops: [],
+  loopCommandIndexes: [],
   looping: false,
   depth: 0,
   commandIndex: 0,
@@ -36,7 +36,7 @@ assert.deepStrictEqual(brainfuck.compile('<', {
   input: ''
 }), {
   memory: [],
-  loops: [],
+  loopCommandIndexes: [],
   looping: false,
   depth: 0,
   commandIndex: 1,
@@ -47,7 +47,7 @@ assert.deepStrictEqual(brainfuck.compile('<', {
 
 assert.deepStrictEqual(brainfuck.compile('<'), {
   memory: [],
-  loops: [],
+  loopCommandIndexes: [],
   looping: false,
   depth: 0,
   commandIndex: 1,
@@ -58,7 +58,7 @@ assert.deepStrictEqual(brainfuck.compile('<'), {
 
 assert.deepStrictEqual(brainfuck.compile('+'), {
   memory: [1],
-  loops: [],
+  loopCommandIndexes: [],
   looping: false,
   depth: 0,
   commandIndex: 1,
@@ -69,7 +69,7 @@ assert.deepStrictEqual(brainfuck.compile('+'), {
 
 assert.deepStrictEqual(brainfuck.compile('-', {
   memory: [1],
-  loops: [],
+  loopCommandIndexes: [],
   looping: false,
   depth: 0,
   commandIndex: 0,
@@ -78,7 +78,7 @@ assert.deepStrictEqual(brainfuck.compile('-', {
   input: ''
 }), {
   memory: [0],
-  loops: [],
+  loopCommandIndexes: [],
   looping: false,
   depth: 0,
   commandIndex: 1,
@@ -89,7 +89,7 @@ assert.deepStrictEqual(brainfuck.compile('-', {
 
 assert.deepStrictEqual(brainfuck.compile('.', {
   memory: [],
-  loops: [],
+  loopCommandIndexes: [],
   looping: false,
   depth: 0,
   commandIndex: 0,
@@ -98,7 +98,7 @@ assert.deepStrictEqual(brainfuck.compile('.', {
   input: ''
 }), {
   memory: [],
-  loops: [],
+  loopCommandIndexes: [],
   looping: false,
   depth: 0,
   commandIndex: 1,
@@ -109,7 +109,7 @@ assert.deepStrictEqual(brainfuck.compile('.', {
 
 assert.deepStrictEqual(brainfuck.compile(',', {
   memory: [],
-  loops: [],
+  loopCommandIndexes: [],
   looping: false,
   depth: 0,
   commandIndex: 0,
@@ -118,7 +118,7 @@ assert.deepStrictEqual(brainfuck.compile(',', {
   input: '\u0001'
 }), {
   memory: [1],
-  loops: [],
+  loopCommandIndexes: [],
   looping: false,
   depth: 0,
   commandIndex: 1,
@@ -129,7 +129,7 @@ assert.deepStrictEqual(brainfuck.compile(',', {
 
 assert.deepStrictEqual(brainfuck.compile('[', {
   memory: [],
-  loops: [],
+  loopCommandIndexes: [],
   looping: false,
   depth: 0,
   commandIndex: 0,
@@ -138,7 +138,7 @@ assert.deepStrictEqual(brainfuck.compile('[', {
   input: ''
 }), {
   memory: [],
-  loops: [0],
+  loopCommandIndexes: [0],
   looping: false,
   depth: 0,
   commandIndex: 1,
@@ -149,7 +149,7 @@ assert.deepStrictEqual(brainfuck.compile('[', {
 
 assert.deepStrictEqual(brainfuck.compile(']', {
   memory: [],
-  loops: [],
+  loopCommandIndexes: [],
   looping: true,
   depth: 0,
   commandIndex: 0,
@@ -158,7 +158,7 @@ assert.deepStrictEqual(brainfuck.compile(']', {
   input: ''
 }), {
   memory: [],
-  loops: [],
+  loopCommandIndexes: [],
   looping: false,
   depth: 0,
   commandIndex: 1,
@@ -169,7 +169,7 @@ assert.deepStrictEqual(brainfuck.compile(']', {
 
 assert.deepStrictEqual(brainfuck.compile('[', {
   memory: [1],
-  loops: [],
+  loopCommandIndexes: [],
   looping: false,
   depth: 0,
   commandIndex: 0,
@@ -178,7 +178,7 @@ assert.deepStrictEqual(brainfuck.compile('[', {
   input: ''
 }), {
   memory: [1],
-  loops: [0],
+  loopCommandIndexes: [0],
   looping: false,
   depth: 0,
   commandIndex: 1,

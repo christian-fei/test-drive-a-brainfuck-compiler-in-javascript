@@ -6,7 +6,7 @@ assert.deepStrictEqual(brainfuck.compile('>++++++++[<+++++++++>-]<.>++++[<++++++
   commandIndex: 164,
   depth: 0,
   memory: [100, 87, 33, 0],
-  loops: [],
+  loopCommandIndexes: [],
   looping: false,
   pointer: 2,
   output: 'Hello, World!',

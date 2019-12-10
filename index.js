@@ -4,8 +4,8 @@ module.exports = {
   run
 }
 
-function compile (commands = '', { memory = [], loops = [], looping = false, commandIndex = 0, depth = 0, pointer = 0, output = '', input = '' } = {}) {
-  let state = { memory, loops, looping, commandIndex, depth, pointer, output, input }
+function compile (commands = '', { memory = [], loopCommandIndexes = [], looping = false, commandIndex = 0, depth = 0, pointer = 0, output = '', input = '' } = {}) {
+  let state = { memory, loopCommandIndexes, looping, commandIndex, depth, pointer, output, input }
   commands = commands.replace(/ /gi, '')
   while (state.commandIndex < commands.length) {
     state = interpret(commands[state.commandIndex], state)
@@ -13,7 +13,7 @@ function compile (commands = '', { memory = [], loops = [], looping = false, com
   return state
 }
 
-function interpret (command, { memory = [], loops = [], looping = false, commandIndex = 0, depth = 0, pointer = 0, output = '', input = '' } = {}) {
+function interpret (command, { memory = [], loopCommandIndexes = [], looping = false, commandIndex = 0, depth = 0, pointer = 0, output = '', input = '' } = {}) {
   if (looping) {
     if (command === '[') depth++
     if (command === ']') {
@@ -21,7 +21,7 @@ function interpret (command, { memory = [], loops = [], looping = false, command
       else depth--
     }
     commandIndex++
-    return { commandIndex, depth, memory, loops, looping, pointer, output, input }
+    return { commandIndex, depth, memory, loopCommandIndexes, looping, pointer, output, input }
   }
   if (command === '>') pointer++
   if (command === '<' && pointer > 0) pointer--
@@ -36,18 +36,18 @@ function interpret (command, { memory = [], loops = [], looping = false, command
     if (memory[pointer] === 0) {
       looping = true
     } else {
-      loops.push(commandIndex)
+      loopCommandIndexes.push(commandIndex)
     }
   }
   if (command === ']') {
     if (memory[pointer] === 0) {
-      loops.pop()
+      loopCommandIndexes.pop()
     } else {
-      commandIndex = loops[loops.length - 1]
+      commandIndex = loopCommandIndexes[loopCommandIndexes.length - 1]
     }
   }
   commandIndex++
-  return { commandIndex, depth, memory, loops, looping, pointer, output, input }
+  return { commandIndex, depth, memory, loopCommandIndexes, looping, pointer, output, input }
 }
 
 function run (program, { input = '' } = {}) {
